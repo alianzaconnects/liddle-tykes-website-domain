@@ -5,12 +5,11 @@
   "engines": {
     "node": ">=20"
   },
-  "packageManager": "pnpm@10.33.2",
   "scripts": {
     "build": "vite build",
     "dev": "vite",
     "lint": "eslint .",
-    "start": "serve dist -s",
+    "start": "serve -s dist -l ${PORT:-10000}",
     "preview": "vite preview"
   },
   "dependencies": {

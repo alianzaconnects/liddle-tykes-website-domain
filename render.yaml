@@ -1,14 +1,9 @@
 # Render Blueprint — Static Site (CDN)
-# https://render.com/docs/static-sites#dependency-installation
-#
-# SKIP_INSTALL_DEPS: skip Render’s auto install (avoids npm ci / wrong lockfile fights).
-# Install + build are one explicit pnpm-only path (pnpm-lock.yaml is source of truth).
+# Plain npm. Render auto-installs deps from package-lock.json,
+# then runs the build command. dist/ is published to a global CDN.
 services:
   - type: web
     name: liddle-tykes-website
     runtime: static
-    buildCommand: corepack enable && corepack prepare pnpm@10.33.2 --activate && pnpm install --frozen-lockfile && pnpm run build
+    buildCommand: npm run build
     staticPublishPath: dist
-    envVars:
-      - key: SKIP_INSTALL_DEPS
-        value: "true"
