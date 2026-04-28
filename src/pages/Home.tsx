@@ -3,7 +3,11 @@
 import { useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight, Heart, Users, BookOpen, Award } from "lucide-react"
 
-export default function Home() {
+export type HomeProps = {
+  onNavigate?: (page: string) => void
+}
+
+export default function Home({ onNavigate }: HomeProps) {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isAutoPlay, setIsAutoPlay] = useState(true)
 
@@ -162,12 +166,13 @@ export default function Home() {
                   >
                     Call Us Today
                   </a>
-                  <a
-                    href="#about"
+                  <button
+                    type="button"
+                    onClick={() => onNavigate?.("about")}
                     className="bg-transparent border-2 border-[#F4C430] text-[#F4C430] px-8 py-4 rounded-lg font-semibold hover:bg-[#F4C430] hover:text-[#3D2645] transition-all duration-300 inline-flex items-center justify-center shadow-lg hover:scale-105 cursor-pointer"
                   >
                     Learn More
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>

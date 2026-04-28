@@ -1,68 +1,138 @@
 "use client"
 
 import { useState } from "react"
-import { Baby, Users, BookOpen, Briefcase, Sun, Clock, Utensils, Phone } from "lucide-react"
+import {
+  Baby,
+  Footprints,
+  Sparkles,
+  GraduationCap,
+  School,
+  BookOpen,
+  Briefcase,
+  Sun,
+  Clock,
+  Utensils,
+  Phone,
+  AlertTriangle,
+  ExternalLink,
+} from "lucide-react"
 
-export default function Services() {
-  const [activeTab, setActiveTab] = useState<"enrollment" | "schedule" | "annual" | "involvement">("enrollment")
+export type ServicesProps = {
+  onNavigate?: (page: string) => void
+}
 
-  const services = [
+export default function Services({ onNavigate }: ServicesProps) {
+  const [activeTab, setActiveTab] = useState<
+    "enrollment" | "schedule" | "annual" | "involvement"
+  >("enrollment")
+
+  const programHighlights = [
     {
       icon: Baby,
       title: "Infant Care",
-      description: "Nurturing care for infants from birth",
+      subtitle: "Birth–15 months",
+      description: "Frog Street Infant, sensory-rich care and loving routines.",
       color: "bg-[#3D2645]",
     },
     {
-      icon: Users,
-      title: "Toddler Care",
-      description: "Engaging activities for growing toddlers",
+      icon: Footprints,
+      title: "Wobbler Care",
+      subtitle: "16–23 months",
+      description: "Frog Street Toddler (Early Stages), movement and early communication.",
       color: "bg-[#F4C430]",
     },
     {
-      icon: BookOpen,
+      icon: Sparkles,
+      title: "Toddler Care",
+      subtitle: "2 years",
+      description: "Frog Street Toddler, Letter People, Brain Smart Start.",
+      color: "bg-[#3D2645]",
+    },
+    {
+      icon: GraduationCap,
       title: "Preschool",
-      description: "FrogStreet Curriculum for academic readiness",
+      subtitle: "3 years",
+      description: "Frog Street Threes—math, science, vocabulary through play.",
+      color: "bg-[#F4C430]",
+    },
+    {
+      icon: School,
+      title: "Pre-K",
+      subtitle: "4–5 years",
+      description: "Frog Street Pre-K, VKRP alignment, school readiness.",
       color: "bg-[#3D2645]",
     },
     {
       icon: Briefcase,
       title: "Before & After School",
-      description: "Includes snack, homework assistance, and tutoring",
+      subtitle: "Ages 5–12",
+      description: "Homework help, clubs, Frog Street AIM and school-age modules.",
       color: "bg-[#F4C430]",
     },
     {
       icon: Sun,
       title: "Summer Camp",
-      description: "Fun and educational summer programs",
+      subtitle: "Ages 5–12",
+      description: "Summer Excellence themes, field trips, Brain Smart mornings.",
       color: "bg-[#3D2645]",
     },
   ]
 
   const dailySchedule = [
-    { time: "6:00 AM - 9:00 AM", activity: "Arrival & Free Play" },
-    { time: "8:00 AM - 8:30 AM", activity: "Breakfast" },
-    { time: "9:00 AM - 11:30 AM", activity: "Educational Programs" },
-    { time: "11:30 AM - 12:45 PM", activity: "Lunch" },
-    { time: "12:00 PM - 2:00 PM", activity: "Nap Time" },
-    { time: "2:30 PM - 3:30 PM", activity: "PM Snack & Free Play" },
-    { time: "3:30 PM - 4:00 PM", activity: "After School Activities" },
-    { time: "4:00 PM - 6:00 PM", activity: "Pick-up Time" },
+    { time: "6:00–8:00 AM", activity: "Arrival & Free Play" },
+    { time: "8:00–8:30 AM", activity: "Breakfast" },
+    { time: "8:30–9:30 AM", activity: "Music & Movement" },
+    { time: "9:30–10:00 AM", activity: "Learning Time (Frog Street)" },
+    { time: "10:00–11:00 AM", activity: "Outdoor Play / Art / Centers" },
+    { time: "11:00 AM–12:00 PM", activity: "Lunch" },
+    { time: "12:00–2:00 PM", activity: "Nap Time" },
+    { time: "2:00–2:30 PM", activity: "Snack" },
+    { time: "2:30–3:00 PM", activity: "Learning Time (Frog Street)" },
+    { time: "3:00–6:00 PM", activity: "Outdoor Play, Free Play & Pick-Up" },
   ]
+
+  const enrollmentItems = [
+    "$100 registration fee",
+    "DSS confirmation (if applicable)",
+    "Copy of birth certificate",
+    "Current immunization records",
+    "Recent well-child physical (or physician exemption form if needed)",
+    "Completed enrollment packet (printed)",
+  ]
+
+  const goToProgramsVolunteers = () => {
+    if (!onNavigate) return
+    try {
+      sessionStorage.setItem("lt-scroll-volunteers", "1")
+    } catch {
+      /* ignore */
+    }
+    onNavigate("programs")
+  }
 
   return (
     <div>
-      <section className="relative h-[400px] bg-gradient-to-br from-[#3D2645] via-[#5A3D6B] to-[#3D2645] overflow-hidden">
+      <section className="relative min-h-[360px] bg-gradient-to-br from-[#3D2645] via-[#5A3D6B] to-[#3D2645] overflow-hidden">
         <div className="absolute inset-0 bg-black/20" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[360px] flex flex-col justify-center py-14">
           <div className="text-white">
-            <h1 className="text-5xl sm:text-6xl font-bold mb-4">Child Care Services</h1>
-            <p className="text-xl sm:text-2xl">
-              Comprehensive programs designed for your child's growth and development
+            <h1 className="text-4xl sm:text-6xl font-bold mb-4">Child Care Services</h1>
+            <p className="text-lg sm:text-2xl max-w-2xl">
+              Enrollment, schedules, meals, policies, and how we partner with families.
             </p>
+            {onNavigate && (
+              <button
+                type="button"
+                onClick={() => onNavigate("programs")}
+                className="mt-8 inline-flex items-center gap-2 text-[#3D2645] bg-[#F4C430] hover:bg-[#FFD966] font-semibold px-6 py-3 rounded-lg transition-colors"
+              >
+                <BookOpen size={20} aria-hidden />
+                Explore childcare programs &amp; curricula
+              </button>
+            )}
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0">
+        <div className="absolute bottom-0 left-0 right-0" aria-hidden>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80" className="w-full">
             <path
               fill="#ffffff"
@@ -75,23 +145,41 @@ export default function Services() {
 
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">Our Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-t-4 border-[#F4C430]"
-              >
-                <div className={`w-16 h-16 ${service.color} rounded-full flex items-center justify-center mb-4`}>
-                  <service.icon
-                    size={32}
-                    className={service.color === "bg-[#F4C430]" ? "text-[#3D2645]" : "text-white"}
-                  />
+          <div className="text-center mb-12 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold text-gray-800 mb-3">Programs at a glance</h2>
+            <p className="text-gray-600 text-lg">
+              Full descriptions of each classroom and curriculum live on our{" "}
+              {onNavigate ? (
+                <button
+                  type="button"
+                  onClick={() => onNavigate("programs")}
+                  className="text-[#3D2645] font-semibold underline decoration-[#F4C430] underline-offset-2 hover:text-[#5A3D6B]"
+                >
+                  Programs page
+                </button>
+              ) : (
+                "Programs page"
+              )}
+              .
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8 mb-8">
+            {programHighlights.map((service, index) => {
+              const Icon = service.icon
+              return (
+                <div
+                  key={index}
+                  className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-t-4 border-[#F4C430]"
+                >
+                  <div className={`w-14 h-14 ${service.color} rounded-full flex items-center justify-center mb-4`}>
+                    <Icon size={28} className={service.color === "bg-[#F4C430]" ? "text-[#3D2645]" : "text-white"} />
+                  </div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-[#F4C430] mb-1">{service.subtitle}</p>
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">{service.title}</h3>
+                  <p className="text-gray-600">{service.description}</p>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-3">{service.title}</h3>
-                <p className="text-gray-600 text-lg">{service.description}</p>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </section>
@@ -101,54 +189,64 @@ export default function Services() {
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
             <div className="flex flex-wrap border-b border-gray-200">
               <button
+                type="button"
                 onClick={() => setActiveTab("enrollment")}
-                className={`flex-1 px-6 py-4 text-lg font-semibold transition-colors ${
-                  activeTab === "enrollment" ? "bg-[#3D2645] text-white" : "bg-gray-50 text-gray-700 hover:bg-gray-100"
+                className={`flex-1 min-w-[140px] px-4 sm:px-6 py-4 text-base sm:text-lg font-semibold transition-colors ${
+                  activeTab === "enrollment"
+                    ? "bg-[#3D2645] text-white"
+                    : "bg-gray-50 text-gray-700 hover:bg-gray-100"
                 }`}
               >
                 Enrollment
               </button>
               <button
+                type="button"
                 onClick={() => setActiveTab("schedule")}
-                className={`flex-1 px-6 py-4 text-lg font-semibold transition-colors ${
-                  activeTab === "schedule" ? "bg-[#3D2645] text-white" : "bg-gray-50 text-gray-700 hover:bg-gray-100"
+                className={`flex-1 min-w-[140px] px-4 sm:px-6 py-4 text-base sm:text-lg font-semibold transition-colors ${
+                  activeTab === "schedule"
+                    ? "bg-[#3D2645] text-white"
+                    : "bg-gray-50 text-gray-700 hover:bg-gray-100"
                 }`}
               >
-                Daily Schedule
+                Schedule &amp; meals
               </button>
               <button
+                type="button"
                 onClick={() => setActiveTab("annual")}
-                className={`flex-1 px-6 py-4 text-lg font-semibold transition-colors ${
-                  activeTab === "annual" ? "bg-[#3D2645] text-white" : "bg-gray-50 text-gray-700 hover:bg-gray-100"
+                className={`flex-1 min-w-[140px] px-4 sm:px-6 py-4 text-base sm:text-lg font-semibold transition-colors ${
+                  activeTab === "annual"
+                    ? "bg-[#3D2645] text-white"
+                    : "bg-gray-50 text-gray-700 hover:bg-gray-100"
                 }`}
               >
-                Annual Schedule
+                Closures
               </button>
               <button
+                type="button"
                 onClick={() => setActiveTab("involvement")}
-                className={`flex-1 px-6 py-4 text-lg font-semibold transition-colors ${
-                  activeTab === "involvement" ? "bg-[#3D2645] text-white" : "bg-gray-50 text-gray-700 hover:bg-gray-100"
+                className={`flex-1 min-w-[140px] px-4 sm:px-6 py-4 text-base sm:text-lg font-semibold transition-colors ${
+                  activeTab === "involvement"
+                    ? "bg-[#3D2645] text-white"
+                    : "bg-gray-50 text-gray-700 hover:bg-gray-100"
                 }`}
               >
-                Parental Involvement
+                Family &amp; volunteers
               </button>
             </div>
 
             <div className="p-8 sm:p-12">
               {activeTab === "enrollment" && (
                 <div>
-                  <h2 className="text-3xl font-bold text-gray-800 mb-6">Enrollment Information</h2>
+                  <h2 className="text-3xl font-bold text-gray-800 mb-6">Enrollment information</h2>
                   <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                    Once you are ready to enroll your child with us, please set up an appointment so we can best assist
-                    you. We will be glad to take the time to inform you about everything you need to know, including the
-                    relevant paperwork. Pricing will vary depending on the age of your child and hours needed.
+                    Once you’re ready to enroll, please schedule an appointment so we can assist with paperwork and
+                    tuition details. Pricing varies by age and schedule.
                   </p>
 
                   <div className="bg-gradient-to-r from-[#3D2645] to-[#5A3D6B] rounded-xl p-8 text-white mb-8">
-                    <h3 className="text-2xl font-bold mb-4">Ready to Enroll?</h3>
+                    <h3 className="text-2xl font-bold mb-4">Ready to enroll?</h3>
                     <p className="text-lg mb-6">
-                      Contact us today to schedule an appointment and tour our facility. We're here to answer all your
-                      questions and help you get started.
+                      Contact us for a tour and to get started. We’re glad to answer your questions.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4">
                       <a
@@ -156,134 +254,177 @@ export default function Services() {
                         className="bg-[#F4C430] text-[#3D2645] px-8 py-4 rounded-lg font-semibold hover:bg-[#FFD966] transition-colors inline-flex items-center justify-center gap-2"
                       >
                         <Phone size={20} />
-                        <span>Call: 276-236-3421</span>
+                        <span>Call 276-236-3421</span>
                       </a>
                       <a
                         href="mailto:lddletykesdaycare@yahoo.com"
                         className="bg-transparent border-2 border-[#F4C430] text-[#F4C430] px-8 py-4 rounded-lg font-semibold hover:bg-[#F4C430] hover:text-[#3D2645] transition-colors inline-flex items-center justify-center"
                       >
-                        Send Email
+                        Send email
                       </a>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-gray-50 rounded-lg p-6">
-                      <h4 className="text-xl font-bold text-gray-800 mb-4">What to Bring</h4>
-                      <ul className="space-y-2 text-gray-700">
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#3D2645]">•</span>
-                          <span>Child's immunization records</span>
+                  <div id="what-to-bring" className="bg-gray-50 rounded-xl p-8 border border-gray-100">
+                    <h3 className="text-2xl font-bold text-gray-800 mb-4">Enrollment: What to Bring</h3>
+                    <p className="text-gray-700 mb-6">
+                      Please bring the following for each child to help ensure safety and a smooth enrollment process.
+                    </p>
+                    <ul className="space-y-3 text-gray-800">
+                      {enrollmentItems.map((item) => (
+                        <li key={item} className="flex gap-3">
+                          <span className="text-[#3D2645] font-bold">•</span>
+                          <span>{item}</span>
                         </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#3D2645]">•</span>
-                          <span>Emergency contact information</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#3D2645]">•</span>
-                          <span>Any allergy or medical information</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#3D2645]">•</span>
-                          <span>Proof of residency</span>
-                        </li>
-                      </ul>
-                    </div>
-
-                    <div className="bg-gray-50 rounded-lg p-6">
-                      <h4 className="text-xl font-bold text-gray-800 mb-4">Age Groups We Serve</h4>
-                      <ul className="space-y-2 text-gray-700">
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#3D2645]">•</span>
-                          <span>Infants (birth and up)</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#3D2645]">•</span>
-                          <span>Toddlers</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#3D2645]">•</span>
-                          <span>Preschool</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-[#3D2645]">•</span>
-                          <span>School-age (up to 12 years)</span>
-                        </li>
-                      </ul>
-                    </div>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               )}
 
               {activeTab === "schedule" && (
-                <div>
-                  <h2 className="text-3xl font-bold text-gray-800 mb-6">Daily Schedule</h2>
-                  <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                    A daily schedule gives children the stability and security they need early on in life. We strive to
-                    provide a stable framework that adds structure to our daily lives while leaving plenty of room for
-                    spontaneous and additional activities.
-                  </p>
-
-                  <div className="bg-gradient-to-br from-[#F4C430]/20 to-[#3D2645]/10 rounded-xl p-6 mb-8">
-                    <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                      <Clock size={24} className="text-[#3D2645]" />
-                      Operating Hours
-                    </h3>
-                    <p className="text-lg text-gray-700">
-                      We provide child care Monday through Friday, 6:00 AM - 6:00 PM
+                <div className="space-y-10">
+                  <div>
+                    <h2 className="text-3xl font-bold text-gray-800 mb-4">Daily schedule</h2>
+                    <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mb-8">
+                      A balanced day of learning, play, and care. We provide predictable routines with room for
+                      flexibility and fun.
                     </p>
-                  </div>
 
-                  <div className="overflow-hidden rounded-xl border-2 border-gray-200">
-                    <table className="w-full">
-                      <thead className="bg-gradient-to-r from-[#3D2645] to-[#5A3D6B] text-white">
-                        <tr>
-                          <th className="px-6 py-4 text-left text-lg font-semibold">Time</th>
-                          <th className="px-6 py-4 text-left text-lg font-semibold">Activity</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {dailySchedule.map((item, index) => (
-                          <tr
-                            key={index}
-                            className={`${
-                              index % 2 === 0 ? "bg-white" : "bg-gray-50"
-                            } hover:bg-[#F4C430]/20 transition-colors`}
-                          >
-                            <td className="px-6 py-4 font-medium text-gray-700">{item.time}</td>
-                            <td className="px-6 py-4 text-gray-700">{item.activity}</td>
+                    <div className="bg-gradient-to-br from-[#F4C430]/20 to-[#3D2645]/10 rounded-xl p-6 mb-6">
+                      <h3 className="text-xl font-bold text-gray-800 mb-2 flex items-center gap-2">
+                        <Clock size={24} className="text-[#3D2645]" />
+                        Operating hours
+                      </h3>
+                      <p className="text-lg text-gray-700">Monday–Friday, 6:00 AM – 6:00 PM</p>
+                    </div>
+
+                    <div className="overflow-hidden rounded-xl border-2 border-gray-200 mb-8">
+                      <table className="w-full text-left">
+                        <thead className="bg-gradient-to-r from-[#3D2645] to-[#5A3D6B] text-white">
+                          <tr>
+                            <th className="px-4 sm:px-6 py-4 text-base sm:text-lg font-semibold">Time</th>
+                            <th className="px-4 sm:px-6 py-4 text-base sm:text-lg font-semibold">Activity</th>
                           </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                        </thead>
+                        <tbody>
+                          {dailySchedule.map((item, index) => (
+                            <tr
+                              key={item.time + item.activity}
+                              className={`${
+                                index % 2 === 0 ? "bg-white" : "bg-gray-50"
+                              } hover:bg-[#F4C430]/15 transition-colors`}
+                            >
+                              <td className="px-4 sm:px-6 py-3 sm:py-4 font-medium text-gray-800 whitespace-nowrap">
+                                {item.time}
+                              </td>
+                              <td className="px-4 sm:px-6 py-3 sm:py-4 text-gray-700">{item.activity}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
 
-                  <div className="mt-8 bg-[#F4C430]/20 border-l-4 border-[#F4C430] rounded-lg p-6">
-                    <h4 className="text-xl font-bold text-gray-800 mb-3 flex items-center gap-2">
-                      <Utensils size={24} className="text-[#3D2645]" />
-                      Meals & Nutrition
-                    </h4>
-                    <p className="text-gray-700 mb-2">
-                      We participate in the USDA and CACFP food programs to provide nutritious meals and snacks
-                      throughout the day.
+                  <div className="bg-amber-50 border-l-4 border-[#F4C430] rounded-lg p-6 flex gap-4">
+                    <AlertTriangle className="text-[#3D2645] flex-shrink-0 mt-0.5" size={28} aria-hidden />
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">Important drop-off policy</h3>
+                      <p className="text-gray-800 leading-relaxed">
+                        <strong>Cut-off for drop-off is 9:30 AM.</strong> We are unable to accept children after this
+                        time unless there is a doctor’s appointment with a note.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                      <Utensils className="text-[#3D2645]" size={28} />
+                      Meal times
+                    </h3>
+                    <p className="text-gray-700 mb-4">
+                      We participate in USDA and CACFP programs to provide nutritious meals and snacks.
                     </p>
-                    <p className="text-gray-700 font-medium">
-                      Key Meal Times: Breakfast (8:00-8:30 AM), Lunch (11:30 AM-12:45 PM), PM Snack (2:30-3:30 PM)
-                    </p>
+                    <ul className="space-y-2 text-gray-800 text-lg mb-8">
+                      <li>
+                        <strong>Breakfast:</strong> 8:00–8:30 AM
+                      </li>
+                      <li>
+                        <strong>Lunch:</strong> 11:00 AM–12:00 PM
+                      </li>
+                      <li>
+                        <strong>Snack:</strong> 2:00–2:30 PM
+                      </li>
+                    </ul>
+
+                    <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                      <h4 className="text-lg font-bold text-[#3D2645] mb-4">
+                        School-age meal schedule (when school is in session)
+                      </h4>
+                      <ul className="space-y-2 text-gray-700">
+                        <li>
+                          <strong>Early breakfast (ages 5–12):</strong> 6:00–7:00 AM
+                        </li>
+                        <li>
+                          <strong>Breakfast:</strong> 8:00–8:30 AM
+                        </li>
+                        <li>
+                          <strong>Lunch:</strong> 11:00–11:30 AM
+                        </li>
+                        <li>
+                          <strong>Snack:</strong> 2:00–2:30 PM
+                        </li>
+                        <li>
+                          <strong>Additional snacks (ages 5–12):</strong> 3:00–3:30 PM and 4:00–4:30 PM
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               )}
 
               {activeTab === "annual" && (
                 <div>
-                  <h2 className="text-3xl font-bold text-gray-800 mb-6">Annual Schedule</h2>
+                  <h2 className="text-3xl font-bold text-gray-800 mb-4">Annual closures</h2>
                   <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                    Please note the following holidays when our facility will be closed. We encourage families to plan
-                    ahead for these dates.
+                    We follow our regular holiday schedule throughout the year. For any{" "}
+                    <strong>additional or unexpected closures</strong>, please check our Facebook page, the WDBJ7
+                    website, or call the office—we want you to have the most up-to-date information.
                   </p>
 
-                  <div className="bg-gradient-to-br from-[#F4C430]/20 to-[#3D2645]/10 rounded-xl p-8">
-                    <h3 className="text-2xl font-bold text-gray-800 mb-6">Holiday Closures</h3>
+                  <div className="flex flex-wrap gap-4 mb-10">
+                    <a
+                      href="https://www.facebook.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#3D2645] text-white font-semibold hover:bg-[#5A3D6B] transition-colors"
+                    >
+                      Facebook updates
+                      <ExternalLink size={18} aria-hidden />
+                    </a>
+                    <a
+                      href="https://www.wdbj7.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-[#3D2645] text-[#3D2645] font-semibold hover:bg-[#3D2645]/5 transition-colors"
+                    >
+                      WDBJ7 website
+                      <ExternalLink size={18} aria-hidden />
+                    </a>
+                    <a
+                      href="tel:276-236-3421"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#F4C430] text-[#3D2645] font-semibold hover:bg-[#FFD966] transition-colors"
+                    >
+                      <Phone size={18} aria-hidden />
+                      Call office
+                    </a>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-[#F4C430]/20 to-[#3D2645]/10 rounded-xl p-8 mb-8">
+                    <h3 className="text-2xl font-bold text-gray-800 mb-6">Holiday closures (examples)</h3>
+                    <p className="text-gray-700 mb-4">
+                      Specific dates vary by calendar year—confirm with staff or official announcements.
+                    </p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {[
                         "New Year's Day",
@@ -301,71 +442,81 @@ export default function Services() {
                       ))}
                     </div>
                   </div>
-
-                  <div className="mt-8 bg-[#F4C430]/20 border-l-4 border-[#F4C430] rounded-lg p-6">
-                    <p className="text-gray-700">
-                      For specific dates and any additional closures, please contact our office. We will provide advance
-                      notice for any schedule changes.
-                    </p>
-                  </div>
                 </div>
               )}
 
               {activeTab === "involvement" && (
-                <div>
-                  <h2 className="text-3xl font-bold text-gray-800 mb-6">Parental Involvement</h2>
-                  <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                    Successful teamwork between parents and educators is important to us because it reflects on the
-                    child's development. That's why we have a culture of teamwork at Liddle Tykes. There is constant
-                    interaction between parents and educators as we plan excursions, common activities, and parties.
-                  </p>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <div className="bg-gradient-to-br from-[#F4C430]/30 to-[#3D2645]/10 rounded-xl p-6">
-                      <h3 className="text-xl font-bold text-gray-800 mb-4">Reading Hour Workgroup</h3>
-                      <p className="text-gray-700">
-                        Parents of children of all ages read a story to the classroom. Please let us know if you can
-                        volunteer your time.
+                <div className="space-y-10">
+                  {onNavigate && (
+                    <div className="bg-gradient-to-r from-[#F4C430]/30 to-[#3D2645]/10 rounded-xl p-6 border border-[#F4C430]/40">
+                      <h3 className="text-xl font-bold text-[#3D2645] mb-2">Teen volunteers (ages 13–15)</h3>
+                      <p className="text-gray-700 mb-4">
+                        We offer a structured volunteer program for teens—supervision, training, and meaningful ways to
+                        support classrooms. Full details and requirements are on our Programs page.
                       </p>
+                      <button
+                        type="button"
+                        onClick={goToProgramsVolunteers}
+                        className="bg-[#3D2645] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#5A3D6B] transition-colors"
+                      >
+                        Read volunteer program
+                      </button>
                     </div>
+                  )}
 
-                    <div className="bg-gradient-to-br from-[#3D2645]/20 to-[#F4C430]/10 rounded-xl p-6">
-                      <h3 className="text-xl font-bold text-gray-800 mb-4">Father-Child Day</h3>
-                      <p className="text-gray-700">
-                        Liddle Tykes hosts a Father-Child Day event. The day's activities are planned by our educators
-                        and members of the parent working group.
-                      </p>
-                    </div>
-
-                    <div className="bg-gradient-to-br from-[#F4C430]/30 to-[#3D2645]/10 rounded-xl p-6">
-                      <h3 className="text-xl font-bold text-gray-800 mb-4">Room Parent Program</h3>
-                      <p className="text-gray-700">
-                        Each month we ask 4 parents to become honorary room parents to spend an hour each week inside
-                        the classroom to assist in art projects, music class, etc.
-                      </p>
-                    </div>
-
-                    <div className="bg-gradient-to-br from-[#3D2645]/20 to-[#F4C430]/10 rounded-xl p-6">
-                      <h3 className="text-xl font-bold text-gray-800 mb-4">Child-Parent Talent Show</h3>
-                      <p className="text-gray-700">
-                        Once a year Liddle Tykes holds a student-parent talent show featuring singing, dancing, skits,
-                        and magic acts to showcase your child's many talents.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="bg-gradient-to-r from-[#3D2645] to-[#5A3D6B] rounded-xl p-8 text-white text-center">
-                    <h3 className="text-2xl font-bold mb-4">Get Involved!</h3>
-                    <p className="text-lg mb-6">
-                      We're always grateful for support above and beyond the call of duty. Contact us to find out what
-                      you can do to be part of your child's educational journey.
+                  <div>
+                    <h2 className="text-3xl font-bold text-gray-800 mb-6">Parental involvement</h2>
+                    <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+                      Teamwork between parents and educators matters to us. We keep families connected through
+                      activities, events, and classroom support.
                     </p>
-                    <a
-                      href="mailto:lddletykesdaycare@yahoo.com"
-                      className="bg-[#F4C430] text-[#3D2645] px-8 py-4 rounded-lg font-semibold hover:bg-[#FFD966] transition-colors inline-block"
-                    >
-                      Contact Us Today
-                    </a>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                      <div className="bg-gradient-to-br from-[#F4C430]/30 to-[#3D2645]/10 rounded-xl p-6">
+                        <h3 className="text-xl font-bold text-gray-800 mb-4">Reading Hour Workgroup</h3>
+                        <p className="text-gray-700">
+                          Parents of children of all ages read a story to the classroom. Let us know if you can
+                          volunteer your time.
+                        </p>
+                      </div>
+
+                      <div className="bg-gradient-to-br from-[#3D2645]/20 to-[#F4C430]/10 rounded-xl p-6">
+                        <h3 className="text-xl font-bold text-gray-800 mb-4">Father-Child Day</h3>
+                        <p className="text-gray-700">
+                          A special day of activities planned by educators and members of the parent working group.
+                        </p>
+                      </div>
+
+                      <div className="bg-gradient-to-br from-[#F4C430]/30 to-[#3D2645]/10 rounded-xl p-6">
+                        <h3 className="text-xl font-bold text-gray-800 mb-4">Room Parent Program</h3>
+                        <p className="text-gray-700">
+                          Each month we invite parents to be honorary room parents—about an hour a week—to assist with
+                          art projects, music, and more.
+                        </p>
+                      </div>
+
+                      <div className="bg-gradient-to-br from-[#3D2645]/20 to-[#F4C430]/10 rounded-xl p-6">
+                        <h3 className="text-xl font-bold text-gray-800 mb-4">Child-Parent Talent Show</h3>
+                        <p className="text-gray-700">
+                          An annual showcase for singing, dancing, skits, and magic—a fun way to celebrate your
+                          child’s talents together.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="bg-gradient-to-r from-[#3D2645] to-[#5A3D6B] rounded-xl p-8 text-white text-center">
+                      <h3 className="text-2xl font-bold mb-4">Get involved</h3>
+                      <p className="text-lg mb-6">
+                        Ask us how you can support your child’s classroom—we’re grateful for partnership beyond the daily
+                        routine.
+                      </p>
+                      <a
+                        href="mailto:lddletykesdaycare@yahoo.com"
+                        className="bg-[#F4C430] text-[#3D2645] px-8 py-4 rounded-lg font-semibold hover:bg-[#FFD966] transition-colors inline-block"
+                      >
+                        Contact us
+                      </a>
+                    </div>
                   </div>
                 </div>
               )}

@@ -14,29 +14,35 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
   const navItems = [
     { name: "Home", path: "home" },
     { name: "About Us", path: "about" },
+    { name: "Programs", path: "programs" },
     { name: "Child Care Services", path: "services" },
     { name: "Contact Us", path: "contact" },
   ]
 
   return (
     <>
-      <div className="bg-[#3D2645] text-white py-2 px-4">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-sm gap-2">
-          <div className="flex items-center gap-4">
-            <a href="tel:276-236-3421" className="flex items-center gap-2 hover:text-[#F4C430] transition-colors">
-              <Phone size={16} />
+      <div className="bg-[#3D2645] text-white py-3 sm:py-2 px-4">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 sm:gap-2 text-sm">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
+            <a
+              href="tel:276-236-3421"
+              className="flex items-center gap-2 hover:text-[#F4C430] transition-colors shrink-0"
+            >
+              <Phone size={16} className="shrink-0" aria-hidden />
               <span>276-236-3421</span>
             </a>
             <a
               href="mailto:lddletykesdaycare@yahoo.com"
-              className="flex items-center gap-2 hover:text-[#F4C430] transition-colors"
+              className="flex items-start gap-2 hover:text-[#F4C430] transition-colors min-w-0"
             >
-              <Mail size={16} />
-              <span>lddletykesdaycare@yahoo.com</span>
+              <Mail size={16} className="shrink-0 mt-0.5" aria-hidden />
+              <span className="break-all sm:break-normal leading-snug">lddletykesdaycare@yahoo.com</span>
             </a>
           </div>
-          <div className="text-center sm:text-right">
-            <span className="font-medium">Hours: Mon-Fri 6:00 AM - 6:00 PM</span>
+          <div className="text-center sm:text-right border-t border-white/15 pt-3 sm:border-0 sm:pt-0">
+            <span className="font-medium text-xs sm:text-sm leading-relaxed text-white/95">
+              Hours: Mon-Fri 6:00 AM - 6:00 PM
+            </span>
           </div>
         </div>
       </div>

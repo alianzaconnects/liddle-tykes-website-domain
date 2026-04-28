@@ -1,0 +1,8 @@
+# Render Blueprint — Static Site (CDN)
+# https://render.com/docs/deploy-a-vite-application
+services:
+  - type: web
+    name: liddle-tykes-website
+    runtime: static
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
