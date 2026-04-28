@@ -4,5 +4,6 @@ services:
   - type: web
     name: liddle-tykes-website
     runtime: static
-    buildCommand: npm ci && npm run build
+    # deps: Render runs pnpm install (frozen) when pnpm-lock.yaml is present
+    buildCommand: pnpm run build
     staticPublishPath: dist
