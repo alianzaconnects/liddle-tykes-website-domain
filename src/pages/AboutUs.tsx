@@ -2,6 +2,11 @@
 
 import { useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight, Target, TrendingUp, Award, CheckCircle } from "lucide-react"
+import imgCandiceNewman from "../../Assets/Image from Nathan via Squoosh.webp"
+import imgTammyUtt from "../../Assets/Image from Nathan via Squoosh (1).webp"
+import imgJessicaLineberry from "../../Assets/Image from Nathan via Slack (1) (1).webp"
+import imgStephanieAnders from "../../Assets/Image from Nathan via Slack.webp"
+import imgChristianQuintero from "../../Assets/Image from Nathan via Slack (1).webp"
 
 export default function AboutUs() {
   const [currentImage, setCurrentImage] = useState(0)
@@ -35,32 +40,32 @@ export default function AboutUs() {
 
   const team = [
     {
-      name: "Tammy Utt",
-      role: "Owner/Director",
-      imageUrl: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400",
+      name: "Candice Newman",
+      role: "Program Director",
+      years: "With Liddle Tykes since 2018",
+      imageUrl: imgCandiceNewman,
     },
     {
-      name: "Jessica Hall",
+      name: "Tammy Utt",
+      role: "Owner/Director",
+      imageUrl: imgTammyUtt,
+    },
+    {
+      name: "Jessica Lineberry",
       role: "Director/Pre-School Lead Teacher",
       years: "With Liddle Tykes since 2011",
-      imageUrl: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400",
+      imageUrl: imgJessicaLineberry,
+    },
+    {
+      name: "Stephanie Anders",
+      role: "Assistant Director Lead Teacher - Toddlers",
+      imageUrl: imgStephanieAnders,
     },
     {
       name: "Christian Quintero",
       role: "Bilingual Lead Teacher - PreSchool",
       years: "With Liddle Tykes since 2017",
-      imageUrl: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=400",
-    },
-    {
-      name: "Candice Newman",
-      role: "Program Director",
-      years: "With Liddle Tykes since 2018",
-      imageUrl: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=400",
-    },
-    {
-      name: "Stephanie Anders",
-      role: "Assistant Director Lead Teacher - Toddlers",
-      imageUrl: "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=400",
+      imageUrl: imgChristianQuintero,
     },
   ]
 
@@ -209,11 +214,11 @@ export default function AboutUs() {
                 key={index}
                 className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
               >
-                <div className="h-64 overflow-hidden bg-gradient-to-br from-[#F4C430] to-[#3D2645]">
+                <div className="h-80 sm:h-96 overflow-hidden bg-gradient-to-br from-[#F4C430] to-[#3D2645]">
                   <img
                     src={member.imageUrl || "/placeholder.svg"}
                     alt={member.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
                 </div>
                 <div className="p-6">
