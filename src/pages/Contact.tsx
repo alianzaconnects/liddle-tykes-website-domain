@@ -1,34 +1,8 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react"
+import { MapPin, Phone, Mail, Clock } from "lucide-react"
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  })
-  const [submitted, setSubmitted] = useState(false)
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
-      setFormData({ name: "", email: "", message: "" })
-    }, 3000)
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
-  }
-
   return (
     <div>
       <section className="relative h-[400px] bg-gradient-to-br from-[#3D2645] via-[#5A3D6B] to-[#3D2645] overflow-hidden">
@@ -51,155 +25,91 @@ export default function Contact() {
       </section>
 
       <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-800 mb-8">Get in Touch</h2>
-              <p className="text-lg text-gray-700 mb-8">
-                We'd love to hear from you! Whether you're interested in enrolling your child, scheduling a tour, or
-                have questions about our programs, please don't hesitate to reach out.
-              </p>
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 box-border">
+          <h2 className="text-3xl font-bold text-gray-800 mb-8">Get in Touch</h2>
+          <p className="text-lg text-gray-700 mb-8">
+            We'd love to hear from you! Whether you're interested in enrolling your child, scheduling a tour, or have
+            questions about our programs, please don't hesitate to reach out.
+          </p>
 
-              <div className="space-y-6">
-                <div className="bg-gradient-to-r from-[#3D2645] to-[#5A3D6B] rounded-xl p-6 text-white">
-                  <h3 className="text-2xl font-bold mb-6">Liddle Tykes Child Development Center</h3>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 lg:items-stretch">
+            <div className="bg-gradient-to-r from-[#3D2645] to-[#5A3D6B] rounded-xl p-6 text-white lg:min-h-0">
+                <h3 className="text-2xl font-bold mb-6">Liddle Tykes Child Development Center</h3>
 
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                        <MapPin size={20} />
-                      </div>
-                      <div>
-                        <p className="font-semibold mb-1">Address</p>
-                        <p>59 Melrose Ln</p>
-                        <p>Galax, VA 24333</p>
-                      </div>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <MapPin size={20} />
                     </div>
+                    <div>
+                      <p className="font-semibold mb-1">Address</p>
+                      <p>59 Melrose Ln</p>
+                      <p>Galax, VA 24333</p>
+                    </div>
+                  </div>
 
-                    <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Phone size={20} />
-                      </div>
-                      <div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Phone size={20} />
+                    </div>
+                    <div className="flex-1 min-w-0 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                      <div className="min-w-0">
                         <p className="font-semibold mb-1">Phone</p>
                         <a href="tel:276-236-3421" className="hover:underline">
                           276-236-3421
                         </a>
                       </div>
+                      <a
+                        href="tel:276-236-3421"
+                        className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#F4C430] px-4 py-2.5 text-sm font-semibold text-[#3D2645] transition-colors hover:bg-[#FFD966] shrink-0 self-start"
+                      >
+                        <Phone size={18} aria-hidden />
+                        Call
+                      </a>
                     </div>
+                  </div>
 
-                    <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Mail size={20} />
-                      </div>
-                      <div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Mail size={20} />
+                    </div>
+                    <div className="flex-1 min-w-0 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                      <div className="min-w-0">
                         <p className="font-semibold mb-1">Email</p>
                         <a href="mailto:lddletykesdaycare@yahoo.com" className="hover:underline break-all">
                           lddletykesdaycare@yahoo.com
                         </a>
                       </div>
+                      <a
+                        href="mailto:lddletykesdaycare@yahoo.com"
+                        className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#F4C430] px-4 py-2.5 text-sm font-semibold text-[#3D2645] transition-colors hover:bg-[#FFD966] shrink-0 self-start"
+                      >
+                        <Mail size={18} aria-hidden />
+                        Email
+                      </a>
                     </div>
+                  </div>
 
-                    <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Clock size={20} />
-                      </div>
-                      <div>
-                        <p className="font-semibold mb-1">Hours</p>
-                        <p>Monday - Friday</p>
-                        <p>6:00 AM - 6:00 PM</p>
-                      </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Clock size={20} />
+                    </div>
+                    <div>
+                      <p className="font-semibold mb-1">Hours</p>
+                      <p>Monday - Friday</p>
+                      <p>6:00 AM - 6:00 PM</p>
                     </div>
                   </div>
                 </div>
-
-                <div className="bg-gradient-to-br from-[#F4C430]/20 to-[#3D2645]/10 rounded-xl p-6 border-2 border-[#F4C430]">
-                  <h4 className="text-xl font-bold text-gray-800 mb-4">Schedule a Visit</h4>
-                  <p className="text-gray-700 mb-4">
-                    The best way to experience what Liddle Tykes has to offer is to visit us in person. Call or email us
-                    to schedule a tour of our facility.
-                  </p>
-                  <p className="text-gray-700 font-medium">We're looking forward to meeting you and your child!</p>
-                </div>
-              </div>
             </div>
 
-            <div>
-              <div className="bg-white rounded-2xl shadow-xl p-8 border-t-4 border-[#F4C430]">
-                <h3 className="text-2xl font-bold text-gray-800 mb-6">Send Us a Message</h3>
-
-                {submitted ? (
-                  <div className="bg-green-50 border-2 border-green-500 rounded-xl p-8 text-center">
-                    <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <CheckCircle size={32} className="text-white" />
-                    </div>
-                    <h4 className="text-2xl font-bold text-gray-800 mb-2">Thank You!</h4>
-                    <p className="text-gray-700">
-                      Your message has been received. We'll get back to you as soon as possible.
-                    </p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
-                        Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#3D2645] focus:outline-none transition-colors"
-                        placeholder="Your full name"
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
-                        Email Address *
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#3D2645] focus:outline-none transition-colors"
-                        placeholder="your.email@example.com"
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
-                        Message *
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                        rows={6}
-                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#3D2645] focus:outline-none transition-colors resize-none"
-                        placeholder="Tell us about your child, ask questions, or schedule a tour..."
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      className="w-full bg-gradient-to-r from-[#3D2645] to-[#5A3D6B] text-white py-4 px-8 rounded-lg font-semibold hover:from-[#2A1A32] hover:to-[#4A2D5B] transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
-                    >
-                      <Send size={20} />
-                      <span>Send Message</span>
-                    </button>
-
-                    <p className="text-sm text-gray-600 text-center">* Required fields</p>
-                  </form>
-                )}
-              </div>
+            <div className="bg-gradient-to-br from-[#F4C430]/20 to-[#3D2645]/10 rounded-xl p-6 pb-10 border-2 border-[#F4C430] h-fit flex flex-col justify-start items-start lg:min-h-0">
+                <h4 className="text-xl font-bold text-gray-800 mb-4">Schedule a Visit</h4>
+                <p className="text-gray-700 mb-4">
+                  The best way to experience what Liddle Tykes has to offer is to visit us in person. Call or email us to
+                  schedule a tour of our facility.
+                </p>
+                <p className="text-gray-700 font-medium">We're looking forward to meeting you and your child!</p>
             </div>
           </div>
         </div>

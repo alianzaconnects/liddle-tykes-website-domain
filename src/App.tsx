@@ -33,7 +33,7 @@ function App() {
     <div className="min-h-screen bg-white">
       <Header currentPage={currentPage} onNavigate={onNavigate} />
       <main>{renderPage()}</main>
-      <Footer />
+      <Footer onNavigate={onNavigate} />
     </div>
   );
 }

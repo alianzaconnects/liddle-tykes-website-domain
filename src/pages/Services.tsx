@@ -394,7 +394,7 @@ export default function Services({ onNavigate }: ServicesProps) {
 
                   <div className="flex flex-wrap gap-4 mb-10">
                     <a
-                      href="https://www.facebook.com"
+                      href="https://www.facebook.com/liddletykes/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#3D2645] text-white font-semibold hover:bg-[#5A3D6B] transition-colors"

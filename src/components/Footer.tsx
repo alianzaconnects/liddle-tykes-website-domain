@@ -2,7 +2,11 @@
 
 import { MapPin, Phone, Mail, Clock, Facebook, Printer } from "lucide-react"
 
-export default function Footer() {
+interface FooterProps {
+  onNavigate: (page: string) => void
+}
+
+export default function Footer({ onNavigate }: FooterProps) {
   const currentYear = new Date().getFullYear()
 
   return (
@@ -10,11 +14,21 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-2xl font-bold mb-4 text-[#F4C430]">Liddle Tykes</h3>
+            <button
+              type="button"
+              onClick={() => onNavigate("home")}
+              className="flex items-center mb-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F4C430] rounded"
+            >
+              <img
+                src="/logo.png"
+                alt="Liddle Tykes Logo"
+                className="h-20 w-auto hover:scale-105 transition-transform cursor-pointer"
+              />
+            </button>
             <p className="text-gray-300 mb-4">Building for the future "One LIDDLE step at a TIME"</p>
             <div className="flex gap-4">
               <a
-                href="https://www.facebook.com"
+                href="https://www.facebook.com/liddletykes/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-[#F4C430] hover:bg-[#FFD966] text-[#3D2645] rounded-full flex items-center justify-center transition-colors"
