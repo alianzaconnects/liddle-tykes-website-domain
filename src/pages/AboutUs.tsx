@@ -38,22 +38,23 @@ export default function AboutUs() {
     },
   ]
 
+  // Grid order matches photo slots left-to-right; names/roles aligned to each image.
   const team = [
+    {
+      name: "Christian",
+      role: "Bilingual Lead Teacher - PreSchool",
+      years: "With Liddle Tykes since 2017",
+      imageUrl: imgCandiceNewman,
+    },
     {
       name: "Candice Newman",
       role: "Program Director",
       years: "With Liddle Tykes since 2018",
-      imageUrl: imgCandiceNewman,
+      imageUrl: imgTammyUtt,
     },
     {
       name: "Tammy Utt",
       role: "Owner/Director",
-      imageUrl: imgTammyUtt,
-    },
-    {
-      name: "Jessica Lineberry",
-      role: "Director/Pre-School Lead Teacher",
-      years: "With Liddle Tykes since 2011",
       imageUrl: imgJessicaLineberry,
     },
     {
@@ -62,9 +63,9 @@ export default function AboutUs() {
       imageUrl: imgStephanieAnders,
     },
     {
-      name: "Christian Quintero",
-      role: "Bilingual Lead Teacher - PreSchool",
-      years: "With Liddle Tykes since 2017",
+      name: "Jessica Lineberry",
+      role: "Director/Pre-School Lead Teacher",
+      years: "With Liddle Tykes since 2011",
       imageUrl: imgChristianQuintero,
     },
   ]
