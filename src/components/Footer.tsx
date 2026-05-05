@@ -63,10 +63,10 @@ export default function Footer({ onNavigate }: FooterProps) {
               <div className="flex items-center gap-3">
                 <Mail size={20} className="text-[#F4C430] flex-shrink-0" />
                 <a
-                  href="mailto:lddletykesdaycare@yahoo.com"
+                  href="mailto:liddletykesdaycare@yahoo.com"
                   className="hover:text-[#F4C430] transition-colors break-all"
                 >
-                  lddletykesdaycare@yahoo.com
+                  liddletykesdaycare@yahoo.com
                 </a>
               </div>
             </div>

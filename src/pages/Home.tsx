@@ -304,7 +304,7 @@ export default function Home({ onNavigate }: HomeProps) {
                 <span>Call Us: 276-236-3421</span>
               </a>
               <a
-                href="mailto:lddletykesdaycare@yahoo.com"
+                href="mailto:liddletykesdaycare@yahoo.com"
                 className="bg-transparent border-2 border-[#F4C430] text-[#F4C430] px-8 py-4 rounded-lg font-semibold hover:bg-[#F4C430] hover:text-[#3D2645] transition-colors inline-flex items-center justify-center shadow-lg cursor-pointer"
               >
                 Send Email

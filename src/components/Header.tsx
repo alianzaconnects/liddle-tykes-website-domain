@@ -32,11 +32,11 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
               <span>276-236-3421</span>
             </a>
             <a
-              href="mailto:lddletykesdaycare@yahoo.com"
+              href="mailto:liddletykesdaycare@yahoo.com"
               className="flex items-start gap-2 hover:text-[#F4C430] transition-colors min-w-0"
             >
               <Mail size={16} className="shrink-0 mt-0.5" aria-hidden />
-              <span className="break-all sm:break-normal leading-snug">lddletykesdaycare@yahoo.com</span>
+              <span className="break-all sm:break-normal leading-snug">liddletykesdaycare@yahoo.com</span>
             </a>
           </div>
           <div className="text-center sm:text-right border-t border-white/15 pt-3 sm:border-0 sm:pt-0">

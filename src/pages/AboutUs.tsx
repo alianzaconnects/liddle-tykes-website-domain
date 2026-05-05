@@ -41,8 +41,8 @@ export default function AboutUs() {
   // Grid order matches photo slots left-to-right; names/roles aligned to each image.
   const team = [
     {
-      name: "Christian",
-      role: "Bilingual Lead Teacher - PreSchool",
+      name: "Christian Quintero",
+      role: "Assistant Director/ Bilingual Lead Teacher",
       years: "With Liddle Tykes since 2017",
       imageUrl: imgCandiceNewman,
     },
@@ -59,7 +59,7 @@ export default function AboutUs() {
     },
     {
       name: "Stephanie Anders",
-      role: "Assistant Director Lead Teacher - Toddlers",
+      role: "Assistant Director/ Lead Teacher",
       imageUrl: imgStephanieAnders,
     },
     {

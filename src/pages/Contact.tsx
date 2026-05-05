@@ -76,12 +76,12 @@ export default function Contact() {
                     <div className="flex-1 min-w-0 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                       <div className="min-w-0">
                         <p className="font-semibold mb-1">Email</p>
-                        <a href="mailto:lddletykesdaycare@yahoo.com" className="hover:underline break-all">
-                          lddletykesdaycare@yahoo.com
+                        <a href="mailto:liddletykesdaycare@yahoo.com" className="hover:underline break-all">
+                          liddletykesdaycare@yahoo.com
                         </a>
                       </div>
                       <a
-                        href="mailto:lddletykesdaycare@yahoo.com"
+                        href="mailto:liddletykesdaycare@yahoo.com"
                         className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#F4C430] px-4 py-2.5 text-sm font-semibold text-[#3D2645] transition-colors hover:bg-[#FFD966] shrink-0 self-start"
                       >
                         <Mail size={18} aria-hidden />
